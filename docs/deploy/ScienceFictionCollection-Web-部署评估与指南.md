@@ -215,6 +215,8 @@ curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:8080/
 
 ### E0 适用说明
 
+> E3–E6 代码块中的四个文件（`sfc-web-deploy.sh`、`sfc-web.sh`、`sfc-web-nginx.conf`、`sfc-windows-setup.ps1`）另有可执行副本存于本仓库 `docs/deploy/plan-e-scripts/`，可直接拷贝使用。
+
 - 纯静态站点 = 轻负载：nginx 常驻内存约 10–20 MB、**零 GPU 占用**、磁盘约 60 MB（`out/`），与训练/推理进程无资源冲突；`pnpm build` 峰值内存约 1–2 GB，建议避开训练高峰执行部署。
 - 端口选 **8080**：避开 Windows 侧常被占用的 80，WSL 内监听也无需特权；想换端口，把下文 8080 全量替换即可。
 - 阅读器运行期仍从 GitHub raw 按需拉正文（境内优化见 §6，其余排错见 §7）。
